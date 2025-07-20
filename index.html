@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studios Barth - Audiovisual</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+
+  <header class="header">
+  <div class="logo-menu">
+    <img src="assets/img/logo_site.png" alt="Logo Studios Barth" class="logo-flutuante" />
+    <button class="menu-toggle" aria-label="Abrir menu">☰</button>
+  </div>
+
+  <!-- MENU FIXO DESKTOP / MOBILE -->
+  <nav class="menu" id="menuMobile">
+    <a href="#sobre">Sobre</a>
+    <a href="#portfolio">Portfólio</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#contato">Contato</a>
+  </nav>
+
+  <!-- Ícones sociais -->
+  <div class="social-icons">
+    <a href="https://instagram.com/eunicolasbarth" target="_blank" aria-label="Instagram">
+      <img src="assets/img/vetorinsta.png" alt="Instagram" />
+    </a>
+    <a href="https://linkedin.com/in/-nicolas-barth" target="_blank" aria-label="LinkedIn">
+      <img src="assets/img/linkedin.png" alt="LinkedIn" />
+    </a>
+    <a href="https://wa.me/5548991217541" target="_blank" aria-label="WhatsApp">
+      <img src="assets/img/vetorwhats.png" alt="WhatsApp" />
+    </a>
+  </div>
+</header>
+
+  <section class="hero">
+    <div class="hero-left">
+      <div class="bloco-texto">
+        <h1 id="hero-title">Portfólio<br>Audiovisual</h1>
+        <p id="hero-description">Uma produção que vai além da estética!<br>Conteúdo com intenção, técnica e propósito.</p>
+        <a href="#sobre" class="btn-sobre">MINHA HISTÓRIA</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img id="hero-image" src="assets/img/eu_profi.png" alt="Imagem carrossel" />
+    </div>
+  </section>
+
+  <section id="sobre" class="sobre-section">
+    <div class="sobre-conteudo">
+      <div class="sobre-texto">
+        <h1>NICOLAS BARTH</h1>
+        <h3>Estrategista de Marketing, Gestor de Tráfego & Videomaker</h3>
+        <p>
+          Tudo começa com uma boa história — e a minha começou cedo. Sou Nicolas Barth, tenho 21 anos, nascido em Porto Alegre e morador da Ilha da Magia há mais de 14 anos. Aos 19 anos mergulhei de cabeça no universo do marketing digital e da produção audiovisual.
+        </p>
+        <p>
+          Hoje, ajudo empresas a se posicionarem com autenticidade e resultado. Atuo com edição de vídeos profissionais, gestão de tráfego pago e estruturação completa de presença digital. Cada projeto é uma oportunidade de entregar mais que estética: é sobre gerar impacto, engajamento e crescimento real.
+        </p>
+        <div class="sobre-servicos">
+          <div class="servico-box">
+            <img src="assets/img/iconeedicao.png" alt="Ícone Edição de Vídeo" />
+            <span>Edição de Vídeo</span>
+          </div>
+          <div class="servico-box">
+            <img src="assets/img/iconestrafego.png" alt="Ícone Gestão de Tráfego" />
+            <span>Gestão de Tráfego</span>
+          </div>
+          <div class="servico-box">
+            <img src="assets/img/iconecamera.png" alt="Ícone Captação Profissional" />
+            <span>Captação Profissional</span>
+          </div>
+        </div>
+        <a href="#portfolio" class="btn-cv">VER PORTFÓLIO</a>
+      </div>
+      <div class="sobre-foto">
+        <img src="assets/img/eu.png" alt="Foto de Nicolas Barth" />
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio" class="portfolio-section">
+    <h2>Seleção Exclusiva</h2>
+    <div class="portfolio-videos">
+      <div class="video-container" onclick="expandirVideo(this)" data-descricao="Vídeo institucional criado para divulgar a instalação de uma quadra esportiva em uma comunidade, com apoio de um deputado federal. A produção reforça a importância do esporte como ferramenta de inclusão, desenvolvimento social e fortalecimento comunitário.">
+        <video src="assets/videos/futebol_deputado.mp4" preload="metadata" muted></video>
+        <p class="video-description">Produção para evento esportivo com figura pública.</p>
+      </div>
+      <div class="video-container" onclick="expandirVideo(this)" data-descricao="Produzido para destacar a importância da aceitação dos pais na vida de crianças com TEA. A narrativa utiliza cores e trilha sonora como recursos sensoriais para transmitir acolhimento, emoção e empatia.">
+        <video src="assets/videos/autismo.mp4" preload="metadata" muted></video>
+        <p class="video-description">Vídeo institucional sobre ambiente sensorial para crianças autistas.</p>
+      </div>
+      <div class="video-container" onclick="expandirVideo(this)" data-descricao="Reels para o Club Sport Marítimo, destacando estrutura e profissionalismo com planos estratégicos e edição dinâmica. O vídeo elevou o padrão do Instagram do clube, alcançando mais de 24 mil pessoas.">
+        <video src="assets/videos/maritimo_reels.mp4" preload="metadata" muted></video>
+        <p class="video-description">Conteúdo criativo para empresa de turismo marítimo.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="video-expandido" id="overlay-video">
+    <button class="fechar-expandido" onclick="fecharExpandido()">✕</button>
+    <video controls id="videoExpandidoEl"></video>
+    <div class="descricao-expandida" id="descricaoExpandidaEl"></div>
+  </div>
+
+  <section id="servicos" class="servicos">
+    <h2 class="titulo-servicos">Serviços Disponibilizados</h2>
+    <div class="caixas-servicos">
+
+      <div class="linha-topo">
+        <!-- A -->
+        <div class="caixa expandivel">
+          <div class="conteudo-fechado">
+            <i class="icone">🎥</i>
+            <h3>Videomaker</h3>
+            <p>Produção de vídeos criativos</p>
+          </div>
+          <div class="conteudo-expandido">
+            <button class="btn-fechar">&times;</button>
+            <img src="assets/img/eu_profi.png" alt="Videomaker" />
+            <div class="texto-expandido">
+              <p>Desde a captação até a edição final, produzo vídeos com foco em emocionar, conectar e gerar impacto.</p>
+              <p>Crio conteúdos que traduzem a essência da sua marca — ampliando seu alcance, fortalecendo sua imagem e gerando autoridade.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- B -->
+        <div class="caixa expandivel">
+          <div class="conteudo-fechado">
+            <i class="icone">#</i>
+            <h3>Gestão de Redes Sociais</h3>
+            <p>Impulsione sua presença online</p>
+          </div>
+          <div class="conteudo-expandido">
+            <button class="btn-fechar">&times;</button>
+            <img src="assets/img/redes_sociais.png" alt="Gestão de Redes" />
+            <div class="texto-expandido">
+              <p>Cuido de toda a presença digital da sua marca: estratégia, identidade visual, conteúdo e engajamento.</p>
+              <p>O foco é claro: fortalecer sua autoridade, engajar de forma autêntica e gerar oportunidades reais.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="linha-base">
+        <!-- C -->
+        <div class="caixa expandivel">
+          <div class="conteudo-fechado">
+            <i class="icone">↑</i>
+            <h3>Gestão de Tráfego Pago</h3>
+            <p>Campanhas eficazes para conversão</p>
+          </div>
+          <div class="conteudo-expandido">
+            <button class="btn-fechar">&times;</button>
+            <img src="assets/img/trafego.png" alt="Tráfego Pago" />
+            <div class="texto-expandido">
+              <p>Campanhas no Google, Instagram e Facebook com foco em performance, otimização e resultados.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- D -->
+        <div class="caixa expandivel">
+          <div class="conteudo-fechado">
+            <i class="icone">🏪</i>
+            <h3>Google Meu Negócio</h3>
+            <p>Melhore sua visibilidade local</p>
+          </div>
+          <div class="conteudo-expandido">
+            <button class="btn-fechar">&times;</button>
+            <img src="assets/img/google_meu_negocio.png" alt="Google Meu Negócio" />
+            <div class="texto-expandido">
+              <p>Otimização de perfil empresarial no Google com fotos, textos estratégicos e localização precisa.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- E -->
+        <div class="caixa expandivel">
+          <div class="conteudo-fechado">
+            <i class="icone">✏️</i>
+            <h3>Roteirista</h3>
+            <p>Escrita envolvente para vídeos</p>
+          </div>
+          <div class="conteudo-expandido">
+            <button class="btn-fechar">&times;</button>
+            <img src="assets/img/roteiro.png" alt="Roteirista" />
+            <div class="texto-expandido">
+              <p>Storytelling para vídeos institucionais, comerciais ou de redes sociais, com narrativa envolvente e estratégica.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" class="contato-container">
+    <h2>Mande uma Mensagem</h2>
+    <form id="formContato">
+      <textarea id="mensagem" placeholder="Escreva sua mensagem aqui..." required></textarea>
+      <button type="submit">Enviar Mensagem</button>
+    </form>
+
+    <div class="redes-sociais">
+      <a href="https://www.instagram.com/eunicolasbarth" target="_blank" class="rede-item">
+        <img src="assets/img/vetorinsta.png" alt="Instagram" />
+        <span>Instagram</span>
+      </a>
+      <a href="https://wa.me/5548991217541" target="_blank" class="rede-item">
+        <img src="assets/img/vetorwhats.png" alt="WhatsApp" />
+        <span>WhatsApp</span>
+      </a>
+      <a href="https://www.linkedin.com/in/-nicolas-barth" target="_blank" class="rede-item">
+        <img src="assets/img/linkedin.png" alt="LinkedIn" />
+        <span>LinkedIn</span>
+      </a>
+    </div>
+  </section>
+
+  <a href="https://wa.me/5548991217541" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <img src="assets/img/whatsimg.png" alt="WhatsApp" />
+  </a>
+
+  <script>
+    document.getElementById('formContato').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const mensagem = document.getElementById('mensagem').value.trim();
+      if (!mensagem) {
+        alert("Por favor, escreva a mensagem.");
+        return;
+      }
+      const texto = encodeURIComponent(mensagem);
+      const numero = '5548991217541';
+      const url = `https://wa.me/${numero}?text=${texto}`;
+      window.open(url, '_blank');
+    });
+  </script>
+
+</body>
+</html>
