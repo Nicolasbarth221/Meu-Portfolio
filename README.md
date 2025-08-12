@@ -5,9 +5,6 @@ Este projeto foi desenvolvido para apresentar meus trabalhos, habilidades e expe
 
 ---
 
-## 📸 Preview do Projeto
-![Preview do site](./assets/preview.png) <!-- Coloque um print do seu site aqui -->
-
 Acesse o site online: **[nicolasbarth.com.br](https://nicolasbarth.com.br)**
 
 ---
@@ -31,3 +28,4 @@ Este portfólio foi construído com foco em **performance, design responsivo** e
 ├── /css                # Folhas de estilo
 ├── /js                 # Scripts JavaScript
 ├── README.md           # Documentação do projeto
+
