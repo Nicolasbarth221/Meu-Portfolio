@@ -16,7 +16,6 @@ Este portfólio foi construído com foco em **performance, design responsivo** e
 - **CSS3** – Layout responsivo, animações e gradientes suaves.
 - **JavaScript** – Interatividade e funcionalidades dinâmicas.
 - **GitHub Pages** – Hospedagem gratuita e estável.
-- **[Outras tecnologias opcionais que você usou, ex: TailwindCSS, Bootstrap, etc.]**
 
 ---
 
@@ -28,4 +27,5 @@ Este portfólio foi construído com foco em **performance, design responsivo** e
 ├── /css                # Folhas de estilo
 ├── /js                 # Scripts JavaScript
 ├── README.md           # Documentação do projeto
+
 
