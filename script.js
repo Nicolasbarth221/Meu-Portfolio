@@ -1,168 +1,193 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // HERO SLIDES
-  const titles = [
+  const slideTitles = [
     "Portfólio<br>Audiovisual",
     "Vídeos que Conectam<br>Pessoas",
     "Marketing com<br>Criatividade",
     "Excelência do Roteiro<br>à Entrega Final"
   ];
 
-  const descriptions = [
+  const slideDescriptions = [
     "Uma produção que vai além da estética!<br>Conteúdo com intenção, técnica e propósito.",
     "Porque cada história bem contada aproxima<br>marcas, inspira confiança e gera resultados.",
     "Seu negócio precisa ser lembrado e criatividade<br>é o que faz isso acontecer.",
     "Do planejamento à pós-produção, tudo é feito<br>para entregar um resultado impecável."
   ];
 
-  const images = [
-    "assets/img/Eu Profi.png",
+  const slideImages = [
+    "assets/img/Eu_Profi.png",
     "assets/img/Carrosel/image2.png",
     "assets/img/Carrosel/image3.png",
     "assets/img/Carrosel/image4.png"
   ];
 
-  let currentIndex = 0;
-  const titleElement = document.getElementById("hero-title");
-  const descElement = document.getElementById("hero-description");
-  const imageElement = document.getElementById("hero-image");
+  const FADE_MS = 700;
+  const SLIDE_MS = 5000;
 
-  function changeSlide(index = null) {
-    currentIndex = index !== null ? index : (currentIndex + 1) % titles.length;
+  let slideIndex = 0;
+  const heroTitle = document.getElementById("hero-title");
+  const heroDesc = document.getElementById("hero-description");
+  const heroImage = document.getElementById("hero-image");
 
-    titleElement.classList.add("fade-out");
-    descElement.classList.add("fade-out");
-    imageElement.classList.add("fade-out");
-
-    setTimeout(() => {
-      titleElement.innerHTML = titles[currentIndex];
-      descElement.innerHTML = descriptions[currentIndex];
-      imageElement.src = images[currentIndex];
-
-      titleElement.classList.remove("fade-out");
-      descElement.classList.remove("fade-out");
-      imageElement.classList.remove("fade-out");
-    }, 700);
+  function setHeroContent(i) {
+    if (!heroTitle || !heroDesc || !heroImage) return;
+    heroTitle.innerHTML = slideTitles[i];
+    heroDesc.innerHTML = slideDescriptions[i];
+    heroImage.src = slideImages[i];
   }
 
-  setInterval(changeSlide, 5000);
+  function changeSlide(nextIndex = null) {
+    slideIndex = nextIndex !== null ? nextIndex : (slideIndex + 1) % slideTitles.length;
+    if (!heroTitle || !heroDesc || !heroImage) return;
 
-  // EXPANSÃO DAS CAIXAS DE SERVIÇO
-  const caixas = document.querySelectorAll(".caixa.expandivel");
-  const containerExpandido = document.createElement("div");
-  containerExpandido.classList.add("conteudo-expandido-global");
-  document.body.appendChild(containerExpandido);
+    heroTitle.classList.add("fade-out");
+    heroDesc.classList.add("fade-out");
+    heroImage.classList.add("fade-out");
 
-  caixas.forEach((caixa) => {
-    const conteudoOriginal = caixa.querySelector(".conteudo-expandido");
+    setTimeout(() => {
+      setHeroContent(slideIndex);
+      heroTitle.classList.remove("fade-out");
+      heroDesc.classList.remove("fade-out");
+      heroImage.classList.remove("fade-out");
+    }, FADE_MS);
+  }
 
-    caixa.addEventListener("click", (e) => {
+  setHeroContent(0);
+  setInterval(changeSlide, SLIDE_MS);
+
+  const serviceCards = document.querySelectorAll(".caixa.expandivel");
+  const expandedHost = document.createElement("div");
+  expandedHost.classList.add("conteudo-expandido-global");
+  document.body.appendChild(expandedHost);
+
+  function closeExpanded() {
+    expandedHost.innerHTML = "";
+    document.body.classList.remove("no-scroll");
+    document.querySelectorAll(".caixa.expandivel").forEach(c => c.classList.remove("aberta"));
+  }
+
+  serviceCards.forEach((card) => {
+    const original = card.querySelector(".conteudo-expandido");
+    if (!original) return;
+
+    card.addEventListener("click", (e) => {
       e.stopPropagation();
-      containerExpandido.innerHTML = "";
-      document.querySelectorAll(".caixa.expandivel").forEach(c => c.classList.remove("aberta"));
-      document.body.classList.remove("no-scroll");
+      closeExpanded();
 
-      const rect = caixa.getBoundingClientRect();
+      const rect = card.getBoundingClientRect();
       const startTop = rect.top + window.scrollY + rect.height / 2;
       const startLeft = rect.left + rect.width / 2;
 
-      const conteudoClone = conteudoOriginal.cloneNode(true);
-      conteudoClone.style.setProperty('--start-top', `${startTop}px`);
-      conteudoClone.style.setProperty('--start-left', `${startLeft}px`);
-      conteudoClone.classList.add("expandido-externo");
-      containerExpandido.appendChild(conteudoClone);
+      const clone = original.cloneNode(true);
+      clone.style.setProperty("--start-top", `${startTop}px`);
+      clone.style.setProperty("--start-left", `${startLeft}px`);
+      clone.classList.add("expandido-externo");
+      clone.setAttribute("role", "dialog");
+      clone.setAttribute("aria-modal", "true");
+
+      expandedHost.appendChild(clone);
       document.body.classList.add("no-scroll");
 
-      requestAnimationFrame(() => {
-        conteudoClone.classList.add("ativo");
-      });
+      requestAnimationFrame(() => clone.classList.add("ativo"));
 
-      conteudoClone.querySelector(".btn-fechar")?.addEventListener("click", (e) => {
-        e.stopPropagation();
-        conteudoClone.classList.remove("ativo");
-        setTimeout(() => {
-          containerExpandido.innerHTML = "";
-          document.body.classList.remove("no-scroll");
-        }, 300);
+      clone.querySelector(".btn-fechar")?.addEventListener("click", (ev) => {
+        ev.stopPropagation();
+        clone.classList.remove("ativo");
+        setTimeout(closeExpanded, 300);
       });
     });
   });
 
   document.addEventListener("click", (e) => {
-    if (!e.target.closest(".expandido-externo")) {
-      containerExpandido.innerHTML = "";
-      document.body.classList.remove("no-scroll");
-    }
+    if (!e.target.closest(".expandido-externo")) closeExpanded();
   });
 
-  // EXPANDIR VÍDEO
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeExpanded();
+  });
+
   window.expandirVideo = function (element) {
-    const video = element.querySelector("video");
-    const descricaoCompleta = element.getAttribute("data-descricao");
+    const video = element?.querySelector("video");
+    const fullDesc = element?.getAttribute("data-descricao");
+    if (!video) return;
 
     const overlay = document.createElement("div");
     overlay.classList.add("video-overlay");
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-modal", "true");
 
     const videoClone = video.cloneNode(true);
     videoClone.controls = true;
     videoClone.muted = false;
     videoClone.autoplay = true;
 
-    const descricao = document.createElement("p");
-    descricao.classList.add("descricao-detalhada");
-    descricao.textContent = descricaoCompleta;
+    const description = document.createElement("p");
+    description.classList.add("descricao-detalhada");
+    description.textContent = fullDesc || "";
 
-    const fechar = document.createElement("span");
-    fechar.classList.add("fechar-overlay");
-    fechar.textContent = "✕";
-    fechar.onclick = () => document.body.removeChild(overlay);
+    const closeBtn = document.createElement("button");
+    closeBtn.classList.add("fechar-overlay");
+    closeBtn.type = "button";
+    closeBtn.ariaLabel = "Fechar vídeo";
+    closeBtn.textContent = "✕";
+    closeBtn.onclick = () => document.body.removeChild(overlay);
 
-    overlay.appendChild(fechar);
+    overlay.appendChild(closeBtn);
     overlay.appendChild(videoClone);
-    overlay.appendChild(descricao);
-    document.body.appendChild(overlay);
-  }
+    overlay.appendChild(description);
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) document.body.removeChild(overlay);
+    });
 
-  // FECHAR EXPANDIDO DE VÍDEO FIXO
+    document.addEventListener("keydown", escCloseOnce, { once: true });
+    function escCloseOnce(ev) {
+      if (ev.key === "Escape") {
+        document.body.contains(overlay) && document.body.removeChild(overlay);
+      }
+    }
+
+    document.body.appendChild(overlay);
+    closeExpanded();
+  };
+
   window.fecharExpandido = function () {
     const overlay = document.getElementById("overlay-video");
     const videoEl = document.getElementById("videoExpandidoEl");
-
+    if (!overlay || !videoEl) return;
     videoEl.pause();
     videoEl.src = "";
     overlay.classList.remove("ativo");
+  };
+
+  const menuToggle = document.querySelector(".menu-toggle");
+  const mobileMenu = document.querySelector("#menuMobile");
+
+  if (menuToggle && mobileMenu) {
+    const toggleMenu = () => mobileMenu.classList.toggle("show");
+    menuToggle.addEventListener("click", toggleMenu);
+    menuToggle.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggleMenu();
+      }
+    });
+    document.querySelectorAll("#menuMobile a").forEach(link => {
+      link.addEventListener("click", () => mobileMenu.classList.remove("show"));
+    });
   }
 
-  // MENU MOBILE
-  const toggleBtn = document.querySelector('.menu-toggle');
-  const menu = document.querySelector('#menuMobile');
-
-  toggleBtn.addEventListener('click', () => {
-    menu.classList.toggle('show');
-  });
-
-  document.querySelectorAll('#menuMobile a').forEach(link => {
-    link.addEventListener('click', () => {
-      menu.classList.remove('show');
-    });
-  });
-
-  // Função reserva (opcional)
   window.trocarHero = function (imgUrl, novoTitulo, novaDescricao) {
-    const img = document.getElementById('hero-image');
-    const title = document.getElementById('hero-title');
-    const desc = document.getElementById('hero-description');
-
-    img.style.opacity = '0';
-    title.style.opacity = '0';
-    desc.style.opacity = '0';
+    if (!heroImage || !heroTitle || !heroDesc) return;
+    heroImage.style.opacity = "0";
+    heroTitle.style.opacity = "0";
+    heroDesc.style.opacity = "0";
 
     setTimeout(() => {
-      img.src = imgUrl;
-      title.innerHTML = novoTitulo;
-      desc.innerHTML = novaDescricao;
-      img.style.opacity = '1';
-      title.style.opacity = '1';
-      desc.style.opacity = '1';
+      heroImage.src = imgUrl;
+      heroTitle.innerHTML = novoTitulo;
+      heroDesc.innerHTML = novaDescricao;
+      heroImage.style.opacity = "1";
+      heroTitle.style.opacity = "1";
+      heroDesc.style.opacity = "1";
     }, 300);
-  }
+  };
 });

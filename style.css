@@ -1,6 +1,4 @@
-
-*
-{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -14,7 +12,6 @@ body {
   overflow-x: hidden;
 }
 
-/* HEADER */
 .header {
   display: flex;
   justify-content: space-between;
@@ -35,10 +32,9 @@ body {
   display: flex;
   gap: 30px;
   margin-right: auto;
-  margin-left: 750px; /* vá ajustando esse valor */
+  margin-left: 750px;
   margin-top: 20px;
 }
-
 
 .menu a {
   color: #ccc;
@@ -52,7 +48,6 @@ body {
   color: #fff;
 }
 
-/* HERO */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -93,7 +88,7 @@ body {
   font-weight: bold;
   font-size: 1rem;
   transition: background 0.3s;
-  margin-top: 40px; /* Aumente esse valor para descer mais */
+  margin-top: 40px;
 }
 
 .btn-sobre:hover {
@@ -114,19 +109,17 @@ body {
   transition: opacity 0.7s ease;
 }
 
-/* Fade effect */
 .fade-out {
   opacity: 0;
 }
 
-/* SEÇÕES */
 .section {
-  width: 100vw; /* ocupa toda a largura da tela */
+  width: 100vw;
   min-height: 100vh;
   padding-top: 80px;
   padding-bottom: 80px;
   padding-right: 60px;
-  padding-left: var(--espaco); /* variável controlável */
+  padding-left: var(--espaco);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -148,18 +141,18 @@ body {
 }
 
 .logo-flutuante {
-  position: absolute; /* ou use 'fixed' se quiser que fique visível mesmo rolando */
-  top: 30px;    /* distância do topo */
-  left: 150px;   /* distância da esquerda */
-  height: 100px; /* ajuste o tamanho da logo */
-  z-index: 999; /* fica por cima dos outros elementos */
-  cursor: move; /* opcional, só para visual */
+  position: absolute;
+  top: 30px;
+  left: 150px;
+  height: 100px;
+  z-index: 999;
+  cursor: move;
 }
 
 .bloco-texto {
   position: absolute;
-  top: 200px;   /* ajuste vertical */
-  left: 100px;   /* ajuste horizontal */
+  top: 200px;
+  left: 100px;
   z-index: 10;
 }
 
@@ -170,7 +163,7 @@ body {
   z-index: 1000;
   width: 60px;
   height: 60px;
-  animation: pulo 1.2s infinite ease-in-out; /* 👈 animação ativa */
+  animation: pulo 1.2s infinite ease-in-out;
 }
 
 .whatsapp-float img {
@@ -190,7 +183,7 @@ body {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-9px); /* 👈 altura do salto */
+    transform: translateY(-9px);
   }
 }
 
@@ -206,7 +199,7 @@ body {
 .social-icons img {
   width: 30px;
   height: 30px;
-  filter: brightness(0) invert(1); /* deixa o vetor branco */
+  filter: brightness(0) invert(1);
   transition: transform 0.2s ease;
 }
 
@@ -279,7 +272,7 @@ body {
 .rede-item img {
   width: 28px;
   height: 28px;
-  filter: brightness(0) invert(1); /* ícones brancos */
+  filter: brightness(0) invert(1);
 }
 
 .rede-item:hover {
@@ -410,7 +403,6 @@ body {
   animation-delay: 1s;
 }
 
-/* Sessão Serviços */
 .servicos {
   background: linear-gradient(to right, #0e0e10, #1a1a2e);
   padding: 100px 20px;
@@ -485,7 +477,6 @@ body {
   min-height: 40px;
 }
 
-/* --- EXPANSÃO DAS CAIXAS --- */
 .caixa.expandivel .conteudo-expandido {
   display: none;
 }
@@ -593,7 +584,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 20px;
-  flex-wrap: wrap; /* Isso permite quebrar para outra linha no celular */
+  flex-wrap: wrap;
   padding: 20px;
 }
 
@@ -652,7 +643,6 @@ body {
   pointer-events: none;
 }
 
-
 .video-description {
   padding: 10px 12px;
   font-size: 0.95rem;
@@ -660,8 +650,6 @@ body {
   text-align: left;
 }
 
-
-/* Botão de play fake */
 .video-container::before {
   content: "▶";
   position: absolute;
@@ -677,8 +665,6 @@ body {
   z-index: 2;
 }
 
-
-/* EXPANDIDO */
 .video-expandido {
   position: fixed;
   top: 0;
@@ -777,7 +763,6 @@ body {
   cursor: pointer;
 }
 
-/* ADIÇÃO IMPORTANTE NO FINAL DO CSS */
 @media screen and (max-width: 1024px) {
   .menu {
     margin: 0;
@@ -847,6 +832,7 @@ body {
     height: auto !important;
   }
 }
+
 .menu-toggle {
   display: none;
   font-size: 2rem;
@@ -856,7 +842,6 @@ body {
   cursor: pointer;
 }
 
-/* Layout mobile refinado */
 @media (max-width: 768px) {
   body {
     overflow-x: hidden;
@@ -973,7 +958,6 @@ body {
   }
 }
 
-/* === MENU MOBILE FIXO E PROFISSIONAL === */
 .menu {
   display: none;
   flex-direction: column;
@@ -984,7 +968,7 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.95); /* overlay escuro */
+  background: rgba(0, 0, 0, 0.95);
   z-index: 9999;
   gap: 20px;
   transition: opacity 0.3s ease;
@@ -1002,7 +986,6 @@ body {
   color: #fff;
 }
 
-/* Botão hamburguer */
 .menu-toggle {
   display: block;
   font-size: 2rem;
@@ -1014,12 +997,10 @@ body {
   position: relative;
 }
 
-/* Mostrar o menu quando ativado */
 .menu.show {
   display: flex;
 }
 
-/* VISUAL PADRÃO PARA DESKTOP */
 @media (min-width: 769px) {
   .menu {
     display: flex !important;
