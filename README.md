@@ -1,7 +1,7 @@
 # 🌐 Portfólio Profissional – Nicolas Barth
 
 Bem-vindo(a) ao repositório do meu portfólio profissional!  
-Este projeto foi desenvolvido para apresentar meus trabalhos, habilidades e experiências na área de **desenvolvimento, QA e marketing digital**, reunindo em um só lugar informações relevantes para recrutadores, clientes e parceiros.
+Este projeto foi desenvolvido para apresentar meus trabalhos, habilidades e experiências na área de **desenvolvimento e marketing digital**, reunindo em um só lugar informações relevantes para recrutadores, clientes e parceiros.
 
 ---
 
@@ -27,5 +27,6 @@ Este portfólio foi construído com foco em **performance, design responsivo** e
 ├── /css                # Folhas de estilo
 ├── /js                 # Scripts JavaScript
 ├── README.md           # Documentação do projeto
+
 
 
